@@ -1,0 +1,157 @@
+<DOCTYPE! html>
+<html>
+<head>
+	<style>
+		div
+		{	
+			position:absolute;
+			left:300;
+			top: 0;
+			background:white;
+			height:250px;
+			width:300px;
+			
+		}
+		
+		@media screen and (orientation:portrait){
+		
+			div
+			{	
+				position:relative;
+				background:white;
+				position:absolute;
+				left:10;
+				top: 130;
+			
+			}
+		}
+	
+	</style>
+	
+
+	
+		
+	
+	<script>
+	
+	function calculate()
+	{
+		var message, x , OT, GP,Tx, Ps, Txx,  Nt = "";
+		message = document.getElementById("message");
+		message.innerHTML = "";
+		
+		x = document.getElementById("Hours").value;
+			try 
+			{ 
+				if(x == "")  throw "empty";
+				if(isNaN(x)) throw "not a number";
+				x == Number(x);
+			}
+			catch(err) 
+			{
+				message.innerHTML = "Input is " + err;
+			}
+			OT = x - 40;
+			Ps = document.getElementById("Position").value;
+			if(Ps == "Staff")
+			{
+				if(OT <= 0)
+					GP = 6.5 * x;
+				else
+					GP = (6.5 * 40) + (OT * (6.5*1.5))
+			}
+			if(Ps == "Supervisor")
+			{
+				if(OT <= 0)
+					GP = 7.5 * x;
+				else
+					GP = (7.5 * 40) + (OT * (7.5*1.5))
+			}
+			if(Ps == "Manager")
+			{
+				if(OT <= 0)
+					GP = 15 * x;
+				else
+					GP = (15 * 40) + (OT * (15*1.5))
+			}
+			
+			
+			Txx = document.getElementById("TaxCheck");
+			//msg.innerHTML = Txx;
+			if(Txx.checked)
+			{
+				Tx = 0;
+			}
+			else
+			{
+				Tx = 0.06;
+			}
+			Tx = Tx * GP;
+			Nt = GP - Tx;
+			
+			
+			
+			document.getElementById("d1").innerHTML = GP.toFixed(2);
+			document.getElementById("d2").innerHTML = Tx.toFixed(2);
+			document.getElementById("d3").innerHTML = Nt.toFixed(2);
+	}
+	
+	function checkPosition()
+	{
+				var x = document.getElementById("Position").value;
+				
+				if (x = "Supervisor")
+				{
+					document.getElementById("TaxCheck").disabled = false;
+				}
+				else if (x = "Manager")
+				{
+					document.getElementById("TaxCheck").disabled = false;
+				}
+				else if (x = "Staff")
+				{
+					document.getElementById("TaxCheck").disabled = true;
+				}
+		
+		
+	}
+
+	</script>
+</head>
+<body>
+<table>
+		<tr>
+			<td>Hours worked:</td>
+			<td>
+				<input type="text" name="Hours" id="Hours"required="required"/>
+				<p id="message"></p>
+			</td>
+		</tr>
+		<tr>
+			<td>Position:</td>
+			<td>
+				<select id="Position" id="Position" onchange="checkPosition()">
+					<option value="Staff">Staff</option>
+					<option value="Supervisor">Supervisor</option>
+					<option value="Manager">Manager</option>
+				</select>
+			</td>	
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input type="checkbox" id="TaxCheck" disabled="true">Tax Exempt</input></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input type="button" id="btnCalc" value="Calculate" onclick="calculate()" /></td>
+		</tr>
+	</table>
+	<hr />
+	<div id="result">
+	RESULTS:</br>
+	GROSS :<p id="d1"></p>
+	TAXES :<p id="d2"></p>
+	NETT :<p id="d3"></p>
+	</div>
+</body>
+<html>
