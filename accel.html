@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function doAccel(accel)
+{
+	document.getElementById("display").innerHTML = "X: " + accel.x 
+									+ "<br/>" +
+									+ "Y: " + accel.y 
+									+ "<br/>" +
+									+ "Z: " + accel.z;
+}
+
+function errorAccel()
+{
+}
+
+function getAccel()
+{
+	//getCurrentAcceleration
+	var accelID = navigator.accelerometer.getCurrentAcceleration(doAccel,errorAccel,{frequency:500});
+}
+</script>
+</head>
+<body>
+	<h1 id="display"></h1>
+	<input type="button" onclick="getAccel()" value="Refresh" />
+</body>
+</html>

@@ -1,23 +1,31 @@
 <DOCTYPE! html>
 <html>
 <head>
-	<script>
+	<script scr="cordova.js"></script>
+<script>
 	
 	function pageLoaded()
 	{
-		document.addEventListener("deviceready",siapsedia);
+		document.addEventListener("deviceready",siapsedia,false);
+		document.addEventListener("resume",function(){
+		document.getElementById("msg").innerHTML = "App resumed";
+		},false);
 	}
 	
 	function siapsedia()
 	{
-		navigator.notification.alert("App is ready",mulakerja,"The new test app");
+		navigator.notification.alert("App is ready",
+								mulaKerja,
+								"The New Test App",
+								"Sudah! Jom jalan");
 	}
 
 	function mulakerja()
 	{
-		document.getElementById("msg").innerHTML = "kerja boleh di u"
+		document.getElementById("msg").innerHTML = "Kerja boleh dimulakan";
 	}
-	</script>
+</script>
+
 </head>
 
 <body onload ="pageLoaded()"/>
@@ -27,6 +35,13 @@
 This is our first mobile app using PhoneGap
 <p id="msg"></p>
 
+<div>
+Navigation:
+<ul>
+	<li><a href="accel.html">Accelerometer</a></li>
+	<li><a href="camera.html">Camera</a></li>
+</ul>
+</div>
 
 </body>
 <html>
