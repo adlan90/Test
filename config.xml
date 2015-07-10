@@ -8,16 +8,16 @@
 
     <!-- versionCode is optional and Android only -->
 
-    <name>Tiki Tech App</name>
+    <name>Adlan Tech App</name>
 
     <description>
         Testing out phonegap build
     </description>
 
     <author href="https://build.phonegap.com" email="support@phonegap.com">
-        Tiki Shabudin
+        Adlan shah
     </author>
-	<icon src="images/icon.png" />
+	<icon src="potatoes.jpg" />
 	<gap:splash src="potatoes.jpg" />
 		
 		<gap:plugin name="org.apache.cordova.camera" version="0.3.2" />
