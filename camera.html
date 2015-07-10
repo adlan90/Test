@@ -16,6 +16,12 @@ function phoneReady()
 function initCamera()
 {
 	navigator.camera.getPicture(onSuccess,onFail,{quality:80});
+	
+	/*
+		var option = {
+			quality:80,destinationType:FILE_URL //DATA_URI,NATIVE_URI
+		}
+	*/
 }
 
 function onSuccess(imageURL)
@@ -33,7 +39,7 @@ function onFail(message)
 </head>
 <body onload="pageLoaded()">
 <input type="button" value="Start Camera" onclick="initCamera()"/>
-</br>
+<br/>
 <img id="pic" height="400"/>
 </body>
 </html>
