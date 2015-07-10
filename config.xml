@@ -11,4 +11,8 @@
 		
 		<icon src="potatoes.jpg"/>
 		<splash src ="potatoes"/>
+		
+		<gap:plugin name="org.apache.cordova.camera" version="0.3.2" />
+		<gap:plugin name="org.apache.cordova.dialogs" version="0.2.10" />
+		<gap:plugin name="org.apache.cordova.device-motion" version="0.2.10" />
     </widget>
